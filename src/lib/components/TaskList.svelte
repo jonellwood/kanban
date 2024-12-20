@@ -1,9 +1,9 @@
 <script>
 	import { liveQuery } from 'dexie';
 	import { db } from '../database/db.js';
-	// import Task from './Task.svelte';
+	import Task from './Task.svelte';
 
-	$: tasks = liveQuery(async () => db.tasks.toArray());
+	let tasks = liveQuery(async () => db.tasks.toArray());
 	async function deleteTask(id) {
 		await db.tasks.delete(id);
 	}
@@ -12,10 +12,11 @@
 	}
 </script>
 
-{$tasks == null ? 'loading...' : ''}
+<!-- {tasks == null ? 'loading...' : ''} -->
 
 {#each $tasks as task (task.id)}
-	<div class="task-card {task.status}">
+	<Task {task} />
+	<!-- <div class="task-card {task.status}">
 		<p class="progress badge">{task.progress}</p>
 		<h2>{task.title}</h2>
 		<p>{task.description}</p>
@@ -25,9 +26,9 @@
 			<option value="done">Done</option>
 			<option value="backlog">Backlog</option>
 		</select>
-		<!-- <p>Created: {task.createdAt ? task.createdAt.toLocaleDateString() : 'None'}</p> -->
+		<p>Created: {task.createdAt ? task.createdAt.toLocaleDateString() : 'None'}</p>
 
-		<!-- <p>Updated: {task.updatedAt ? task.updatedAt.toLocaleDateString() : 'None'}</p> -->
+		<p>Updated: {task.updatedAt ? task.updatedAt.toLocaleDateString() : 'None'}</p>
 		<label for="progress">Progress: {task.progress}</label>
 		<input
 			type="range"
@@ -41,7 +42,7 @@
 		<input type="range" bind:value={task.priority} min="1" max="5" step="1" />
 		<p>Parent: {task.parent ? task.parent : 'None'}</p>
 		<button on:click={() => deleteTask(task.id)} class="delete">Delete</button>
-	</div>
+	</div> -->
 {/each}
 
 <!-- {:else} -->

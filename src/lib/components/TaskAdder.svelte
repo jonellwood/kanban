@@ -10,8 +10,8 @@
 	let status = defaultStatus;
 	let createdAt = defaultCreatedAt;
 	let updatedAt = '';
-	let progress = '';
-	let prioroty = defaultPriority;
+	let progress = defaultProgress;
+	let priority = defaultPriority;
 	let parent = '';
 
 	let addStatus = '';
@@ -25,7 +25,7 @@
 				createdAt,
 				updatedAt,
 				progress,
-				prioroty,
+				priority,
 				parent
 			});
 
@@ -38,7 +38,7 @@
 			createdAt = defaultCreatedAt;
 			updatedAt = '';
 			progress = defaultProgress;
-			prioroty = defaultPriority;
+			priority = defaultPriority;
 			parent = '';
 		} catch (e) {
 			addStatus = `Error adding task: ${e}`;
@@ -69,7 +69,7 @@
 	<input type="range" bind:value={progress} min="0" max="100" step="10" />
 	<br />
 	<label for="prioroty">Priority</label>
-	<input type="number" bind:value={prioroty} id="prioroty" name="prioroty" required />
+	<input type="number" bind:value={priority} id="prioroty" name="prioroty" required />
 	<br />
 	<label for="parent">Parent</label>
 	<input type="text" bind:value={parent} id="parent" name="parent" required />
