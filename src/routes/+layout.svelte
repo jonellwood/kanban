@@ -1,5 +1,6 @@
 <script>
 	let { children } = $props();
+	import NavBar from '$lib/components/custom/boards/NavBar.svelte';
 </script>
 
 <!-- <slot /> -->
